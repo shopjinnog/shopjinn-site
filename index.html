@@ -982,12 +982,14 @@ footer{
       <div id="coupons" style="margin-top:40px;">
         <div class="section-label">Save More</div>
         <h2 class="section-title">Coupons & <em>Affiliate Deals</em></h2>
-        <p class="section-sub">Verified discount codes and hot deals — handpicked and updated regularly.</p>
-        <div class="coupons-grid">
+        <p class="section-sub">Verified discount codes and hot deals — updated daily via our affiliate partners.</p>
+
+        <!-- Static Indian Store Deals -->
+        <div class="coupons-grid" style="margin-bottom:24px">
           <a href="https://amzn.to/49ZBc5f" target="_blank" rel="noopener sponsored" class="coupon-card">
             <div class="coupon-card-brand">
               <img src="https://blog.shopjinn.com/wp-content/uploads/2026/06/logo-amazon.jpg" alt="Amazon" style="width:36px;height:36px;object-fit:contain;border-radius:6px">
-              <span class="coupon-card-store">Amazon</span>
+              <span class="coupon-card-store">Amazon India</span>
             </div>
             <div class="coupon-card-desc">Editor's choice — best value electronics pick of the week.</div>
             <span class="coupon-card-code">SHOP NOW →</span>
@@ -1010,7 +1012,39 @@ footer{
           </a>
         </div>
 
+        <!-- Live Admitad Coupons -->
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--purple);margin-bottom:12px">🏷️ Live Coupon Codes</div>
+        <div class="coupons-grid" id="admitadCoupons">
+          <div class="coupon-card" style="opacity:.4">Loading deals...</div>
+        </div>
       </div>
+
+      <script>
+      async function loadAdmitadCoupons() {
+        const container = document.getElementById('admitadCoupons');
+        try {
+          // Get fresh token via proxy endpoint
+          const tokenRes = await fetch('https://blog.shopjinn.com/wp-json/shopjinn/v1/admitad-coupons');
+          const coupons = await tokenRes.json();
+          if(!coupons || !coupons.length) {
+            container.style.display = 'none';
+            return;
+          }
+          container.innerHTML = coupons.map(c => `
+            <a href="${c.url}" target="_blank" rel="noopener sponsored" class="coupon-card">
+              <div class="coupon-card-brand">
+                <span style="font-size:20px">🏷️</span>
+                <span class="coupon-card-store">${c.store}</span>
+              </div>
+              <div class="coupon-card-desc">${c.desc}</div>
+              ${c.code ? `<span class="coupon-card-code">${c.code}</span>` : '<span class="coupon-card-code">GET DEAL →</span>'}
+            </a>`).join('');
+        } catch(e) {
+          container.style.display = 'none';
+        }
+      }
+      loadAdmitadCoupons();
+      </script>
 
       <!-- HOW IT WORKS -->
       <div style="margin-top:40px;">
