@@ -868,11 +868,7 @@ footer{
       <div class="finder-step">
         <div class="finder-label">Step 2 — What's your budget?</div>
         <div class="finder-options" id="budgetOptions">
-          <button class="finder-btn" data-budget="10000">Under ₹10K</button>
-          <button class="finder-btn" data-budget="15000">₹10K - 15K</button>
-          <button class="finder-btn" data-budget="20000">₹15K - 20K</button>
-          <button class="finder-btn" data-budget="30000">₹20K - 30K</button>
-          <button class="finder-btn" data-budget="999999">₹30K+</button>
+          <button class="finder-btn" data-budget="placeholder">Select a category first</button>
         </div>
       </div>
 
@@ -1194,7 +1190,7 @@ document.querySelectorAll('#catOptions .finder-btn').forEach(btn => {
     document.querySelectorAll('#catOptions .finder-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     selectedCat = btn.dataset.cat;
-    updateFinderResult();
+    updateBudgetOptions(selectedCat);
   });
 });
 
@@ -1207,19 +1203,82 @@ document.querySelectorAll('#budgetOptions .finder-btn').forEach(btn => {
   });
 });
 
+const BUDGET_OPTIONS = {
+  'Smartphones': [
+    {label:'Under ₹10K', search:'under 10000'},
+    {label:'₹10K - 15K', search:'10000 15000'},
+    {label:'₹15K - 25K', search:'15000 25000'},
+    {label:'₹25K - 40K', search:'25000 40000'},
+    {label:'₹40K+',      search:'above 40000'}
+  ],
+  'Laptops': [
+    {label:'Under ₹40K', search:'under 40000'},
+    {label:'₹40K - 60K', search:'40000 60000'},
+    {label:'₹60K - 80K', search:'60000 80000'},
+    {label:'₹1 Lakh+',   search:'above 100000'}
+  ],
+  'Earbuds': [
+    {label:'Under ₹1K', search:'under 1000'},
+    {label:'₹1K - 3K',  search:'1000 3000'},
+    {label:'₹3K - 5K',  search:'3000 5000'},
+    {label:'₹5K - 10K', search:'5000 10000'},
+    {label:'₹10K+',     search:'above 10000'}
+  ],
+  'Smart TV': [
+    {label:'Under ₹20K', search:'under 20000'},
+    {label:'₹20K - 35K', search:'20000 35000'},
+    {label:'₹35K - 50K', search:'35000 50000'},
+    {label:'₹50K+',      search:'above 50000'}
+  ],
+  'Air Conditioner': [
+    {label:'1 Ton',   search:'1 ton'},
+    {label:'1.5 Ton', search:'1.5 ton'},
+    {label:'2 Ton',   search:'2 ton'}
+  ],
+  'Smartwatch': [
+    {label:'Under ₹3K', search:'under 3000'},
+    {label:'₹3K - 8K',  search:'3000 8000'},
+    {label:'₹8K - 15K', search:'8000 15000'},
+    {label:'₹15K+',     search:'above 15000'}
+  ]
+};
+
+const CAT_SLUG = {
+  'Smartphones':     'smartphones',
+  'Laptops':         'laptops',
+  'Earbuds':         'earbuds',
+  'Smart TV':        'smart-tvs',
+  'Air Conditioner': 'ac',
+  'Smartwatch':      'smartwatches'
+};
+
+function updateBudgetOptions(cat){
+  const opts = BUDGET_OPTIONS[cat] || [];
+  const container = document.getElementById('budgetOptions');
+  container.innerHTML = opts.map(o =>
+    `<button class="finder-btn" data-search="${o.search}">${o.label}</button>`
+  ).join('');
+  container.querySelectorAll('.finder-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.finder-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedBudget = btn.dataset.search;
+      updateFinderResult();
+    });
+  });
+  selectedBudget = null;
+  document.getElementById('finderResult').classList.remove('show');
+}
+
 function updateFinderResult(){
   if(!selectedCat || !selectedBudget) return;
   const result = document.getElementById('finderResult');
   const text = document.getElementById('finderText');
   const cta = document.getElementById('finderCta');
-
-  let budgetLabel = selectedBudget === '999999' ? 'Premium (₹30,000+)' : `Under ₹${parseInt(selectedBudget).toLocaleString('en-IN')}`;
-  text.textContent = `Best ${selectedCat} ${budgetLabel} — AI-ranked picks with current prices, specs, pros, cons and verdict.`;
-
-  const query = encodeURIComponent(selectedCat + ' ' + (selectedBudget === '999999' ? '' : selectedBudget));
-  cta.href = `https://blog.shopjinn.com/?s=${query}`;
+  const slug = CAT_SLUG[selectedCat] || '';
+  text.textContent = `Best ${selectedCat} ${selectedBudget} in India — AI-ranked picks with current prices, specs, pros & cons.`;
+  cta.href = `https://blog.shopjinn.com/category/${slug}/?s=${encodeURIComponent(selectedBudget)}`;
   result.classList.add('show');
-
   if(typeof gtag === 'function'){
     gtag('event', 'quick_finder_use', { category: selectedCat, budget: selectedBudget });
   }
