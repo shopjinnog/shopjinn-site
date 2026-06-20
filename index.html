@@ -1365,11 +1365,11 @@ async function loadLatestGuides(){
     container.innerHTML = posts.slice(0,6).map(post => {
       const title = decodeHtml(post.title.rendered);
       const catKey = getCategoryFromTitle(title);
-      const img = CATEGORY_IMAGES[catKey];
       const catLabel = getCategoryLabel(title);
+      const catEmoji = {phone:'📱',smartphone:'📱',laptop:'💻',earbud:'🎧',headphone:'🎧',tv:'📺',ac:'❄️',conditioner:'❄️',watch:'⌚',smartwatch:'⌚',appliance:'🏠',refrigerator:'🏠',washing:'🏠',default:'🛍️'}[catKey] || '🛍️';
       return `
         <a href="${post.link}" class="guide-card">
-          <img class="guide-card-img" src="${img}" loading="lazy" alt="${title.replace(/"/g,'')}">
+          <div class="guide-card-img" style="background:linear-gradient(135deg,#1a0a3a,#0f0f1a);display:flex;align-items:center;justify-content:center;font-size:48px">${catEmoji}</div>
           <div class="guide-card-body">
             <div class="guide-card-cat">${catLabel}</div>
             <div class="guide-card-title">${title}</div>
