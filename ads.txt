@@ -1,0 +1,5 @@
+# ShopJinn ads.txt - shopjinn.com
+# Google AdSense
+google.com, pub-9449965696995178, DIRECT, f08c47fec0942fa0
+# Google Ad Manager
+google.com, 79566325, DIRECT, f08c47fec0942fa0
