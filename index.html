@@ -420,6 +420,7 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
 .sj-ad-wrap {
   text-align: center;
   margin: 32px auto;
+  width: 100%;
 }
 .sj-ad-wrap-label {
   font-size: 10px;
@@ -432,21 +433,27 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
   display: block;
 }
 .sj-ad-box {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  margin: 0 auto;
   border: 1px dashed #d1d5db;
   border-radius: 12px;
   background: #f9fafb;
-  min-height: 90px;
-  width: 100%;
-  max-width: 970px;
+  padding: 6px;
+  width: fit-content;
+  max-width: 100%;
   overflow: hidden;
   position: relative;
 }
-.sj-ad-box-sidebar {
-  max-width: 300px;
-  min-height: 250px;
+.sj-ad-box > div,
+.sj-ad-box > ins,
+.sj-ad-box iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+/* On mobile, GPT serves smaller sizes automatically via sizeMapping */
+@media(max-width:600px){
+  .sj-ad-box { border-radius: 8px; padding: 4px; }
 }
 
 
@@ -454,6 +461,7 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
 .sj-ad-wrap {
   text-align: center;
   margin: 32px auto;
+  width: 100%;
 }
 .sj-ad-wrap-label {
   font-size: 10px;
@@ -466,21 +474,27 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
   display: block;
 }
 .sj-ad-box {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  margin: 0 auto;
   border: 1px dashed #d1d5db;
   border-radius: 12px;
   background: #f9fafb;
-  min-height: 90px;
-  width: 100%;
-  max-width: 970px;
+  padding: 6px;
+  width: fit-content;
+  max-width: 100%;
   overflow: hidden;
   position: relative;
 }
-.sj-ad-box-sidebar {
-  max-width: 300px;
-  min-height: 250px;
+.sj-ad-box > div,
+.sj-ad-box > ins,
+.sj-ad-box iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+/* On mobile, GPT serves smaller sizes automatically via sizeMapping */
+@media(max-width:600px){
+  .sj-ad-box { border-radius: 8px; padding: 4px; }
 }
 
 /* ANIMATIONS */
