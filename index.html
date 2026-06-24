@@ -616,15 +616,20 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
 </div>
 
 <!-- ATF HERO IMAGE -->
-<div style="width:100%;background:#0d1b2e;max-height:220px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+<style>
+.sj-hero-wrap{width:100%;background:#0d1b2e;overflow:hidden;line-height:0;}
+.sj-hero-img{width:100%;height:260px;object-fit:cover;object-position:center top;display:block;}
+@media(max-width:768px){.sj-hero-img{height:auto;object-fit:contain;}}
+</style>
+<div class="sj-hero-wrap">
   <img
+    class="sj-hero-img"
     src="https://blog.shopjinn.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-24-2026-07_57_35-PM.png"
     alt="ShopJinn - AI Powered Shopping Guides India - Best Deals Amazon Flipkart 2026"
     title="ShopJinn AI Shopping Guides India"
     loading="eager"
     fetchpriority="high"
-    width="1440" height="220"
-    style="width:100%;height:220px;object-fit:contain;object-position:center;display:block;"
+    width="1440" height="260"
   >
 </div>
 
