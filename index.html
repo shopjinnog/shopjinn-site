@@ -129,7 +129,7 @@ nav{
   border-bottom:1px solid var(--border);
   box-shadow:var(--shadow);
   padding:0 32px;
-  height:76px;
+  height:110px;
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;
 }
@@ -516,7 +516,7 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
   .finder{padding:20px;}
   .finder-options{gap:6px;}
   .news-grid{grid-template-columns:1fr;}
-  .news-bar{display:none;}
+  /* news-bar replaced by hero overlay */
   .finder-btn{padding:9px 12px;font-size:12px;}
   .mob-sticky-ad{display:block;}
   footer{padding-bottom:80px;}
@@ -559,7 +559,7 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
 
 <!-- NAV -->
 <nav>
-  <a href="https://shopjinn.com" class="logo"><img src="https://blog.shopjinn.com/wp-content/uploads/2026/06/shopjinn-logo-transparent.png" alt="ShopJinn" style="height:60px;width:auto;display:block"></a>
+  <a href="https://shopjinn.com" class="logo"><img src="https://blog.shopjinn.com/wp-content/uploads/2026/06/shopjinn-logo-transparent.png" alt="ShopJinn" style="height:100px;width:auto;display:block"></a>
   <div class="nav-links">
     <a href="https://shopjinn.com" class="nav-link">Home</a>
     <a href="https://blog.shopjinn.com" class="nav-link">Buying Guides</a>
@@ -603,28 +603,30 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
   </div>
 </div>
 
-<!-- ATF HERO IMAGE -->
-<div style="width:100%;background:#0d1b2e;">
+<!-- ATF HERO + NEWS TICKER OVERLAY -->
+<div style="position:relative;width:100%;background:#0d1b2e;">
   <img
     src="https://blog.shopjinn.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-24-2026-07_57_35-PM.png"
     alt="ShopJinn - AI Powered Shopping Guides India - Best Deals Amazon Flipkart 2026"
     title="ShopJinn AI Shopping Guides India"
     loading="eager"
     fetchpriority="high"
-    width="1440" height="400"
-    style="width:100%;height:auto;display:block;"
+    width="1440" height="200"
+    style="width:100%;max-height:200px;object-fit:cover;display:block;object-position:center top;"
   >
-</div>
-<!-- BREAKING NEWS TICKER + NEWS CARDS -->
-<div class="news-bar">
-  <div class="news-bar-inner">
-    <span class="news-badge">⚡ Tech News</span>
-    <div class="news-ticker" id="newsTicker">
-      <span>Loading latest tech news...</span>
+  <!-- News ticker overlaid on bottom of hero -->
+  <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(10,10,20,0.82);backdrop-filter:blur(6px);border-top:1px solid rgba(108,71,255,0.3);padding:0 24px;">
+    <div style="max-width:1200px;margin:0 auto;height:38px;display:flex;align-items:center;gap:12px;">
+      <span style="background:#6c47ff;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap;letter-spacing:.5px;flex-shrink:0;">⚡ Tech News</span>
+      <div style="flex:1;overflow:hidden;white-space:nowrap;">
+        <span id="newsTicker" style="display:inline-block;font-size:13px;color:rgba(255,255,255,0.85);animation:ticker 60s linear infinite;white-space:nowrap;">Loading latest tech news...</span>
+      </div>
+      <a href="https://blog.shopjinn.com/?cat=2" style="font-size:12px;color:#a78bff;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;">All News →</a>
     </div>
-    <a href="https://blog.shopjinn.com/?cat=2" class="news-all">All News →</a>
   </div>
 </div>
+
+
 
 <section class="news-section">
   <div class="news-inner">
