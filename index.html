@@ -617,15 +617,26 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
 
 <!-- ATF HERO IMAGE -->
 <style>
-.sj-hero-wrap{width:100%;background:#0d1b2e;line-height:0;}
-.sj-hero-img{width:100%;height:400px;display:block;object-fit:cover;object-position:center center;}
-@media(max-width:1024px){.sj-hero-img{height:300px;}}
-@media(max-width:600px){.sj-hero-img{height:200px;}}
+.sj-hero-wrap{width:100%;line-height:0;margin:0;padding:0;}
+.sj-hero-img{
+  width:100%;
+  height:auto;
+  aspect-ratio:1440/420;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+@media(max-width:768px){
+  .sj-hero-img{aspect-ratio:16/9;}
+}
+@media(max-width:480px){
+  .sj-hero-img{aspect-ratio:4/3;}
+}
 </style>
 <div class="sj-hero-wrap">
   <img
     class="sj-hero-img"
-    src="https://blog.shopjinn.com/wp-content/uploads/2026/06/widelandscape_wide.png"
+    src="https://blog.shopjinn.com/wp-content/uploads/2026/06/ultrawide_latest_v1.png"
     alt="ShopJinn - AI Powered Shopping Guides India - Best Deals Amazon Flipkart 2026"
     title="ShopJinn AI Shopping Guides India"
     loading="eager"
