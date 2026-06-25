@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://shopjinn.com/sitemap.xml
+Sitemap: https://blog.shopjinn.com/sitemap.xml
