@@ -741,22 +741,6 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
 <section style="padding-top:30px;">
   <div class="layout">
     <div class="main-col">
-
-      <!-- LATEST GUIDES (DYNAMIC) -->
-      <div class="section-label">Fresh Today</div>
-      <h2 class="section-title">Latest <em>Buying Guides</em></h2>
-      <p class="section-sub">AI-written guides updated 3 times daily with current prices and honest comparisons.</p>
-      <div class="guides-grid" id="latestGuides">
-        <div class="guide-skeleton"></div>
-        <div class="guide-skeleton"></div>
-        <div class="guide-skeleton"></div>
-      </div>
-      <a href="https://blog.shopjinn.com" class="view-all">View All Buying Guides →</a>
-
-      <!-- NATIVE / FLUID AD -->
-      <div class="sj-ad-wrap"><span class="sj-ad-wrap-label">Advertisement</span><div class="sj-ad-box"><div id="sj-home-native" style="width:100%">
-        <script>googletag.cmd.push(function(){googletag.display('sj-home-native');});</script></div></div></div>
-
       <!-- CATEGORIES -->
       <div style="margin-top:40px;">
         <div class="section-label">Shop by Category</div>
@@ -1104,115 +1088,6 @@ function handleSubscribe(e) {
   if(typeof gtag === 'function'){ gtag('event', 'newsletter_signup'); }
 }
 
-/* ===== DYNAMIC LATEST GUIDES (WordPress REST API) ===== */
-const CATEGORY_IMAGES = {
-  default: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=320&fit=crop',
-  phone: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=320&fit=crop',
-  smartphone: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=320&fit=crop',
-  laptop: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=320&fit=crop',
-  earbud: 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600&h=320&fit=crop',
-  headphone: 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600&h=320&fit=crop',
-  tv: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=320&fit=crop',
-  ac: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=320&fit=crop',
-  conditioner: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=320&fit=crop',
-  watch: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=320&fit=crop',
-  smartwatch: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=320&fit=crop',
-  appliance: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&h=320&fit=crop',
-  refrigerator: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&h=320&fit=crop',
-  washing: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&h=320&fit=crop'
-};
-
-function getCategoryFromTitle(title){
-  const t = title.toLowerCase();
-  for(const key in CATEGORY_IMAGES){
-    if(key !== 'default' && t.includes(key)) return key;
-  }
-  return 'default';
-}
-
-function getCategoryLabel(title){
-  const t = title.toLowerCase();
-  if(t.includes('phone')) return 'Smartphones';
-  if(t.includes('laptop')) return 'Laptops';
-  if(t.includes('earbud') || t.includes('headphone')) return 'Audio';
-  if(t.includes('tv')) return 'Smart TVs';
-  if(t.includes('ac') || t.includes('conditioner')) return 'Appliances';
-  if(t.includes('watch')) return 'Wearables';
-  if(t.includes('appliance') || t.includes('refrigerator') || t.includes('washing')) return 'Appliances';
-  return 'Buying Guide';
-}
-
-function decodeHtml(html){
-  const txt = document.createElement('textarea');
-  txt.innerHTML = html;
-  return txt.value;
-}
-
-function timeAgo(dateStr){
-  const date = new Date(dateStr);
-  const now = new Date();
-  const diffHrs = Math.floor((now - date) / 36e5);
-  if(diffHrs < 1) return 'Just now';
-  if(diffHrs < 24) return diffHrs + 'h ago';
-  const diffDays = Math.floor(diffHrs / 24);
-  if(diffDays === 1) return 'Yesterday';
-  return diffDays + ' days ago';
-}
-
-async function loadLatestGuides(){
-  const container = document.getElementById('latestGuides');
-  try {
-    const res = await fetch('https://blog.shopjinn.com/wp-json/wp/v2/posts?per_page=6&_fields=id,title,link,date,excerpt', {
-      headers: { 'Accept': 'application/json' }
-    });
-    if(!res.ok) throw new Error('API error: ' + res.status);
-    const posts = await res.json();
-
-    if(!Array.isArray(posts) || !posts.length){
-      throw new Error('No posts returned');
-    }
-
-    container.innerHTML = posts.slice(0,6).map(post => {
-      const title = decodeHtml(post.title.rendered);
-      const catKey = getCategoryFromTitle(title);
-      const catLabel = getCategoryLabel(title);
-      const catEmoji = {phone:'📱',smartphone:'📱',laptop:'💻',earbud:'🎧',headphone:'🎧',tv:'📺',ac:'❄️',conditioner:'❄️',watch:'⌚',smartwatch:'⌚',appliance:'🏠',refrigerator:'🏠',washing:'🏠',default:'🛍️'}[catKey] || '🛍️';
-      return `
-        <a href="${post.link}" class="guide-card">
-          <div class="guide-card-img" style="background:linear-gradient(135deg,#1a0a3a,#0f0f1a);display:flex;align-items:center;justify-content:center;font-size:48px">${catEmoji}</div>
-          <div class="guide-card-body">
-            <div class="guide-card-cat">${catLabel}</div>
-            <div class="guide-card-title">${title}</div>
-          </div>
-          <div class="guide-card-footer">
-            <span>ShopJinn AI</span>
-            <span>${timeAgo(post.date)}</span>
-          </div>
-        </a>`;
-    }).join('');
-
-  } catch(err){
-    console.error('Failed to load guides:', err);
-    container.innerHTML = `
-      <a href="https://blog.shopjinn.com" class="guide-card">
-        <div class="guide-card-body" style="padding:40px 18px;text-align:center;">
-          <div class="guide-card-title">Visit our blog for the latest guides →</div>
-        </div>
-      </a>
-      <a href="https://blog.shopjinn.com" class="guide-card">
-        <div class="guide-card-body" style="padding:40px 18px;text-align:center;">
-          <div class="guide-card-title">New AI guides published 3x daily →</div>
-        </div>
-      </a>
-      <a href="https://blog.shopjinn.com" class="guide-card">
-        <div class="guide-card-body" style="padding:40px 18px;text-align:center;">
-          <div class="guide-card-title">Browse all categories →</div>
-        </div>
-      </a>`;
-  }
-}
-
-loadLatestGuides();
 
 /* ===== LOAD TECH NEWS ===== */
 async function loadTechNews(){
