@@ -1089,7 +1089,7 @@ function updateFinderResult(){
   const cta = document.getElementById('finderCta');
   const slug = CAT_SLUG[selectedCat] || '';
   text.textContent = `Best ${selectedCat} ${selectedBudget} in India — AI-ranked picks with current prices, specs, pros & cons.`;
-  cta.href = `https://blog.shopjinn.com/category/${slug}/?s=${encodeURIComponent(selectedBudget)}`;
+  cta.href = `https://blog.shopjinn.com/category/${slug}/`;
   result.classList.add('show');
   if(typeof gtag === 'function'){
     gtag('event', 'quick_finder_use', { category: selectedCat, budget: selectedBudget });
