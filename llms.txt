@@ -1,33 +1,30 @@
 # ShopJinn — AI-Powered Shopping Guides for India
 
-> ShopJinn is India's AI-powered tech product buying guide platform. We publish daily AI-generated buying guides covering smartphones, laptops, earbuds, smart TVs, air conditioners, smartwatches, and home appliances — with honest comparisons across Amazon India and Flipkart.
+> ShopJinn is India's AI-powered tech product buying guide platform. We publish daily buying guides covering smartphones, laptops, earbuds, smart TVs, air conditioners, smartwatches, and home appliances — with honest comparisons across Amazon India and Flipkart.
 
-## What We Cover
-- Best Smartphones in India (budget to flagship, all price ranges)
-- Best Laptops in India (students, gaming, professional)
-- Best Earbuds & TWS (under ₹1000 to premium ₹50000+)
-- Best Smart TVs in India (32" to 65", all budgets)
-- Best Air Conditioners in India (1 ton, 1.5 ton, 2 ton inverter)
-- Best Smartwatches in India (AMOLED, health tracking)
-- Home Appliances (refrigerators, washing machines)
-- Coupons & Deals (Amazon, Flipkart, Reliance Digital)
-- Tech News (latest gadget launches, price drops, India focus)
+## About
+- Publisher: ShopJinn (shopjinnog@gmail.com)
+- Target Market: Indian consumers
+- Update Frequency: 3 new buying guides daily
+- Language: English (India)
 
-## Key URLs
-- Homepage: https://shopjinn.com
-- Buying Guides: https://blog.shopjinn.com
+## Properties
+- Main Site: https://shopjinn.com
+- Blog & Guides: https://blog.shopjinn.com
+- Coupons & Deals: https://blog.shopjinn.com/coupons/
+- Affiliate Disclosure: https://blog.shopjinn.com/affiliate-disclosure
+
+## Full Content Index
+- llms.txt (blog): https://blog.shopjinn.com/llms.txt
+- Sitemap (blog): https://blog.shopjinn.com/sitemap.xml
+- Sitemap (main): https://shopjinn.com/sitemap.xml
+
+## Categories
 - Smartphones: https://blog.shopjinn.com/category/smartphones/
 - Laptops: https://blog.shopjinn.com/category/laptops/
 - Earbuds: https://blog.shopjinn.com/category/earbuds/
 - Smart TVs: https://blog.shopjinn.com/category/smart-tvs/
 - Air Conditioners: https://blog.shopjinn.com/category/ac/
 - Smartwatches: https://blog.shopjinn.com/category/smartwatches/
+- Tech News: https://blog.shopjinn.com/category/news/
 - Coupons: https://blog.shopjinn.com/coupons/
-- Tech News: https://blog.shopjinn.com/?cat=2
-- Sitemap: https://blog.shopjinn.com/sitemap.xml
-
-## About
-- Publisher: ShopJinn (shopjinnog@gmail.com)
-- Target Market: Indian consumers
-- Update Frequency: 3 new buying guides daily
-- Affiliate Disclosure: https://blog.shopjinn.com/affiliate-disclosure
