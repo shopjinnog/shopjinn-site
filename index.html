@@ -13,7 +13,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="ShopJinn — AI-Powered Shopping Guides for India">
-<meta property="og:description" content="AI-generated buying guides for Indian shoppers. Best phones, laptops, earbuds, TVs and more — updated daily across Amazon India & Flipkart.">
+<meta property="og:description" content="AI-generated buying guides for Indian shoppers. Best phones, laptops, earbuds, TVs and more — updated monthly across Amazon India & Flipkart.">
 <meta property="og:url" content="https://shopjinn.com/">
 <meta property="og:image" content="https://blog.shopjinn.com/wp-content/uploads/2026/06/ultrawide_latest_v1.png">
 <meta property="og:image:width" content="1440">
@@ -34,7 +34,7 @@
 <meta name="geo.placename" content="India">
 <meta name="language" content="English">
 <title>ShopJinn — AI-Powered Shopping Guides for India</title>
-<meta name="description" content="AI-generated buying guides for Indian shoppers. Best phones, laptops, earbuds, TVs and more — updated daily across Amazon India & Flipkart.">
+<meta name="description" content="AI-generated buying guides for Indian shoppers. Best phones, laptops, earbuds, TVs and more — updated monthly across Amazon India & Flipkart.">
 
 <!-- ShopJinn GPT | Homepage | Network: 79566325 -->
 <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" crossorigin="anonymous"></script>
@@ -63,17 +63,17 @@ googletag.cmd.push(function() {
     .addSize([768,0],[])
     .addSize([0,0],[[320,50],[300,50]])
     .build();
-  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[970,250],[728,90],[970,90],[320,100],[320,50]],'sj-home-billboard').defineSizeMapping(billboardMap).setTargeting('pos','billboard').addService(googletag.pubads());
-  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[300,250],[336,280],'fluid'],'sj-home-native').defineSizeMapping(nativeMap).setTargeting('pos','native').addService(googletag.pubads());
-  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[728,90],[970,90],[300,250],[320,100]],'sj-home-leaderboard').defineSizeMapping(leaderboardMap).setTargeting('pos','leaderboard').addService(googletag.pubads());
-  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[300,600],[300,250]],'sj-home-sidebar').defineSizeMapping(sidebarMap).setTargeting('pos','sidebar').addService(googletag.pubads());
-  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[320,50],[300,50]],'sj-home-sticky').defineSizeMapping(stickyMap).setTargeting('pos','sticky').addService(googletag.pubads());
+  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[970,250],[728,90],[970,90],[320,100],[320,50]],'sj-home-billboard').defineSizeMapping(billboardMap).setConfig({targeting:{'pos':'billboard'}}).addService(googletag.pubads());
+  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[300,250],[336,280],'fluid'],'sj-home-native').defineSizeMapping(nativeMap).setConfig({targeting:{'pos':'native'}}).addService(googletag.pubads());
+  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[728,90],[970,90],[300,250],[320,100]],'sj-home-leaderboard').defineSizeMapping(leaderboardMap).setConfig({targeting:{'pos':'leaderboard'}}).addService(googletag.pubads());
+  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[300,600],[300,250]],'sj-home-sidebar').defineSizeMapping(sidebarMap).setConfig({targeting:{'pos':'sidebar'}}).addService(googletag.pubads());
+  googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[[320,50],[300,50]],'sj-home-sticky').defineSizeMapping(stickyMap).setConfig({targeting:{'pos':'sticky'}}).addService(googletag.pubads());
   try{googletag.defineOutOfPageSlot('/79566325/shopjinn/ShopJinn_homepage',googletag.enums.OutOfPageFormat.INTERSTITIAL).addService(googletag.pubads());}catch(e){}
   try{googletag.defineOutOfPageSlot('/79566325/shopjinn/ShopJinn_homepage',googletag.enums.OutOfPageFormat.ANCHOR_BOTTOM).addService(googletag.pubads());}catch(e){}
   googletag.defineSlot('/79566325/shopjinn/ShopJinn_homepage',[1,1],'sj-tracker').addService(googletag.pubads());
-  googletag.pubads().setTargeting('page_type','homepage');
-  googletag.pubads().setTargeting('url',[window.location.pathname]);
-  googletag.pubads().setTargeting('domain',['shopjinn.com']);
+  googletag.pubads().setConfig({targeting:{'page_type':'homepage'}});
+  googletag.pubads().setConfig({targeting:{'url':[window.location.pathname]}});
+  googletag.pubads().setConfig({targeting:{'domain':['shopjinn.com']}});
   googletag.pubads().enableLazyLoad({fetchMarginPercent:500,renderMarginPercent:200,mobileScaling:2.0});
   googletag.pubads().enableSingleRequest();
   googletag.pubads().collapseEmptyDivs(true,true);
@@ -746,7 +746,7 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
       <div style="margin-top:40px;">
         <div class="section-label">Shop by Category</div>
         <h2 class="section-title">What are you <em>looking for?</em></h2>
-        <p class="section-sub">AI buying guides covering every major category — honest, detailed, updated regularly.</p>
+        <p class="section-sub">AI buying guides covering every major category — honest, detailed, updated monthly.</p>
         <div class="cat-grid">
           <a href="https://blog.shopjinn.com/category/smartphones/" class="cat-card">
             <img class="cat-img" src="https://blog.shopjinn.com/wp-content/uploads/2026/06/SJ_SMARTPHONE.png" loading="lazy" alt="Best Smartphones in India 2026 - Buying Guide" title="Smartphones Buying Guide India" width="400" height="140">
@@ -916,7 +916,7 @@ footer{background:var(--text);border-top:1px solid var(--border);padding:48px 24
   <div class="footer-inner">
     <div class="footer-brand">
       <a href="https://shopjinn.com" class="logo">Shop<span>Jinn</span>.</a>
-      <p>India's AI-powered shopping guide platform. Honest comparisons across Amazon India & Flipkart — updated daily.</p>
+      <p>India's AI-powered shopping guide platform. Buying guides updated monthly · Tech news updated daily.</p>
       <div class="social-links">
         <a href="https://x.com/ShopjinnX" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter/X">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
